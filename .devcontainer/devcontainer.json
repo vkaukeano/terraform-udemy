@@ -1,0 +1,55 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.217.4/containers/debian
+{
+	"name": "Dev Container",
+	"build": {
+		"dockerfile": "Dockerfile",
+		// Update 'VARIANT' to pick an Debian version: bullseye, buster
+		// Use bullseye on local arm64/Apple Silicon.
+		"args": { "VARIANT": "bullseye" }
+	},
+	// needed for podman
+	// "runArgs": [
+	// 	"--userns=keep-id"
+	// ],
+	"containerUser": "vscode",
+	"settings": {
+		// --- Devops Settings ---
+		"[terraform]": {
+		  "editor.defaultFormatter": "hashicorp.terraform",
+		  "editor.formatOnSave": true,
+		  "editor.formatOnSaveMode": "file"
+		},
+		"[terraform-vars]": {
+		  "editor.defaultFormatter": "hashicorp.terraform",
+		  "editor.formatOnSave": true,
+		  "editor.formatOnSaveMode": "file"
+		},
+		// --- END Devops Settings ---
+		"workbench.startupEditor": "readme",
+		"editor.rulers": [80, 120]
+	  },
+
+	  "extensions": [
+		"mhutchie.git-graph", // Git Graph used for viewing and working with git history
+		"shardulm94.trailing-spaces", // see trailing spaces in all file types
+		// --- Devops Extensions ---
+		"hashicorp.terraform", // Terraform syntax and operations
+		"tfsec.tfsec", // Used for terraform security
+		"ms-azuretools.vscode-docker", // Used for docker operations
+		"vsliveshare.vsliveshare", // Used to share mob
+		"pluralsight.live-share-mob-timer", // mob timer
+		"cweijan.vscode-mysql-client2", // mysql connection
+		"ms-kubernetes-tools.vscode-kubernetes-tools"
+		// --- END Devops Extensions ---
+	  ],
+
+	// "postStartCommand": "docker-compose up -d",
+
+	"remoteUser": "vscode",
+	"features": {
+		"docker-in-docker": "latest",
+		"terraform": "latest",
+		"node": "lts"
+	}
+}
